@@ -9,10 +9,10 @@ router.use('/produtos', produtosRouter)
 //Substituo o app por router poque criei a const router
 router.get('/', (req, res)=>{
     //res.end("Index Primeira pagina") //node enviou resposta final que aparece na pg 
-    res.render('index')
+    res.render('index')//é o indexRouter.js//
 })
 
-//A partir da rota acima criei essa e as demais
+/**A rota acima, é a principal aqui, e chama as demais abaixo, que são páginas individuais (a) que vão compor (p) routes***/
 router.get('/produtos', (req, res)=>{
     //res.end("Página de Produtos")
     res.render('produtos')

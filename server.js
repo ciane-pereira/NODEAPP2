@@ -7,7 +7,7 @@ const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts')
 
-//Configurações de arquivos estáticos
+//Configurações de arquivos estáticos para express
 app.use(express.static('public'))
 app.use(('/css', express.static(__dirname + 'public/css')))
 app.use(('/img', express.static(__dirname + 'public/img')))
@@ -24,12 +24,14 @@ app.use(expressLayouts)
 /*app.get('/', (req, res)=>{
     res.end("Primeira pagina")
 })*/
-//Impotar o router index atraves da const indexRouter (é pasta/é arquivo)
+//Importar o router index atraves da const indexRouter (é pasta:routes.js/é arquivo:indexRouter.js)
 const indexRouter = require('./routes/indexRouter')
+const produtosRouter = require('./routes/produtosRouter')
 
-//Implato a rota e chamo o indexRouter, página está funcionando
+//Implanto(habilitação) a rota e chamo o indexRouter, página está funcionando
 app.use('/', indexRouter)
+app.use('/', produtosRouter)
 
-
-//Inicializar o serviço
+//Inicializar o serviço o PORT busca o 3000//
 app.listen(process.env.PORT,console.log("Servidor iniciado"))
+/*app.listen(process.env.PORT || 3000, console.log("Servidor em execução"))*/
